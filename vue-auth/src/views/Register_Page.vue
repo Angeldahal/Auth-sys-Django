@@ -66,9 +66,15 @@ export default {
   const router = useRouter();
 
   const submit = async () => {
-    await axios.post("http://localhost:8000/api/register", data);
+    try{
+    await axios.post("register", data);
 
     await router.push("/login")
+    }
+    catch (error) {
+      alert("Email already exists!")
+      console.log(error);
+    }
   };
     return {
       data,
