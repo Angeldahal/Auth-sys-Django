@@ -11,6 +11,9 @@
         <input v-model="data.password" type="password" class="form-control" id="floatingPassword" placeholder="Password">
         <label for="floatingPassword">Password</label>
       </div>
+      <div class="mb-3">
+        <router-link to="/forgot-password" class="text-decoration-none">Forgot Password?</router-link>
+      </div>
   
       <button class="btn btn-primary w-100 py-2" type="submit">Sign in</button>
     </form>

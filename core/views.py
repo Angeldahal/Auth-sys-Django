@@ -107,7 +107,7 @@ class ForgotAPIView(APIView):
             email=email,
             token=token,
         )
-        url = 'http://localhost:3000/reset/' + token
+        url = 'http://localhost:8080/reset/' + token
         send_mail(
             subject='Reset Password',
             message='click {url} to reset your password '.format(url=url),
