@@ -1,8 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
-import Login_Page from '@/views/Login_Page.vue'
 
 const routes: Array<RouteRecordRaw> = [
-  {path: '/login', component: Login_Page},
+  {path: '/login', component: () => import('@/views/Login/Login_Page.vue')},
   {path: '/', component: () => import('@/views/Home_Page.vue')},
   {path: '/register', component: () => import('@/views/Register_Page.vue')},
   {path: '/forgot-password', component: () => import('@/views/Forgot_Password_Page.vue')},
