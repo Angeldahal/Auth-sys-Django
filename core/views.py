@@ -41,6 +41,8 @@ class LoginAPIView(APIView):
         if not user.check_password(password):
             raise exceptions.APIException("Incorrect password!")
         
+        print(user.tfa_secret)
+        
         if user.tfa_secret:
             return Response({
                 "id": user.id,
@@ -67,10 +69,11 @@ class TwoFactorAPIView(APIView):
         
         secret = user.tfa_secret if user.tfa_secret else request.data.get('secret', None)
 
-        if not pyotp.TOTP(secret).verify(request.data.get('otp', None)):
+        if not pyotp.TOTP(secret).verify(request.data.get('code', None)):
             raise exceptions.APIException("Invalid OTP!")
-        
-        if user.tfa_secret is None:
+
+        if not user.tfa_secret:
+            print("Saving...")
             user.tfa_secret = secret
             user.save()
 

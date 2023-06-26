@@ -1,9 +1,9 @@
 <template>
-  <Login_Form @login-data="setLoginData" v-if="loginData.id ===0"/>
+  <Login_Form @login-data="setLoginData" v-if="loginData.id === 0"/>
   <Authenticator_Form :login-data="loginData" @success="success" v-if="loginData.id !== 0"/>
 </template>
 
-<script lang="ts">
+<script>
   import Login_Form from "./Login_Form.vue";
   import Authenticator_Form from "./Authenticator_Form.vue";
   import { reactive } from "vue";
@@ -15,14 +15,12 @@
       setup(){
         const loginData = reactive({ 
           id: 0,
-          secret: "",
-          otpauth_url: "",
         });
         const router = useRouter();
         const store = useStore();
-        const setLoginData = (data: any) => {
+        const setLoginData = data => {
           loginData.id = data.id;
-
+          console.log(data)
           if (data.secret){
             loginData.secret = data.secret;
             loginData.otpauth_url = data.otpauth_url;

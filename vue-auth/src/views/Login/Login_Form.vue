@@ -39,7 +39,7 @@
     import axios from "axios";
         export default {
         name: "Login_Page",
-        emits: ["LoginData"],
+        emits: ["loginData"],
         setup(props: any, context: SetupContext) {
           const data = reactive({
             email: "",

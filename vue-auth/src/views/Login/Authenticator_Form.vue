@@ -42,7 +42,12 @@ import qrcode from 'qrcode';
                     code: code.value,
                 }, {withCredentials: true});
 
-                console.log(data, status)
+                const AUTH_TOKEN = data.token
+                axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+
+                if (AUTH_TOKEN){
+                    localStorage.setItem("token", AUTH_TOKEN);
+                }
 
                 if (status === 200){
                     context.emit("success", true);
