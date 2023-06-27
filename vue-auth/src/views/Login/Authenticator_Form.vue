@@ -42,7 +42,7 @@ import qrcode from 'qrcode';
                     code: code.value,
                 }, {withCredentials: true});
 
-                const AUTH_TOKEN = data.token
+                const AUTH_TOKEN = `Bearer ${data.token}`
                 axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
 
                 if (AUTH_TOKEN){

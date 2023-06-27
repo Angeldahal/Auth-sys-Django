@@ -18,16 +18,16 @@ export default {
         const message = ref("You're not logged in.");
         const store = useStore();
         const auth = computed(() => store.state.auth);
-        const AUTH_TOKEN = localStorage.getItem("token");
-        if (AUTH_TOKEN) {
-            axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
-        }
 
         onMounted(async () => {
             try {
-            const {data} = await axios.get("user");
-            message.value = `Welcome ${data.first_name} ${data.last_name}!`;
-            await store.dispatch("setAuth", true);
+                const AUTH_TOKEN = localStorage.getItem("token");
+            if (AUTH_TOKEN) {
+                axios.defaults.headers.common["Authorization"] = AUTH_TOKEN;
+            }
+                const {data} = await axios.get("user");
+                message.value = `Welcome ${data.first_name} ${data.last_name}!`;
+                await store.dispatch("setAuth", true);
         }
         catch (error) {
             await store.dispatch("setAuth", false);
