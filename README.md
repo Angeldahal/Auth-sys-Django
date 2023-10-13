@@ -46,9 +46,9 @@
 
 ## 📍 Overview
 
-The repository contains the basic authentication system in Django and Vue. The vue-auth is the frontend of the project and auth_sys is the backend of the project.
+<p>The repository contains the basic authentication system in Django and Vue. The vue-auth is the frontend of the project and auth_sys is the backend of the project.
 The project is a learning project and is not intended to be used in production.
-But, you can use it as a reference for your project.
+But, you can use it as a reference for your project.<p>
 ---
 
 
